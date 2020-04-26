@@ -1,0 +1,42 @@
+﻿{% load static %}
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>TestTask</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="mt-5 col-5 offset-5">
+        <form method="post" enctype="multipart/form-data" action="">
+            {% csrf_token %}
+            <label for="file" style="font-weight:bold">Прикрепите файл</label><br>
+            <input type="file" name="deal_file" class="form-control-file" required /><br>
+            {% if status %}
+            <label class="text-danger">{{status}}</label><br><br>
+            {% endif %}
+            <input type="submit" name="send" value="Загрузить" class="btn btn-danger" />
+        </form>
+    </div>
+    {% if clients.count > 0 %}
+            <h2 class="mt-5 offset-5 mb-2 font-weight-normal">Список клиентов</h2>
+            <table class="col-5 offset-3" width="100%">
+                <tr>
+                    <th>username</th>
+                    <th>spent_money</th>
+                    <th>gems</th>
+                    <th>
+                    {% for client in clients %}
+                        <tr class='success'>
+                            <td>{{ client.customer }}</td>
+                            <td>{{ client.spent_money }}</td>
+                            <td>
+                            {% for gem in gems %}
+                                {{ gem.item }}
+                            {% endfor %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+            </table>
+        {% endif %}
+</body>
+</html>
