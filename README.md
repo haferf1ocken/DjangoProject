@@ -12,5 +12,5 @@
  - Кнопка «Загрузить» отправляет POST запрос с выбранным файлом
  + По ссылке http://localhost:8000/api/v1/testapp/deals/ доступен список всех сделок в формате json
  - По ссылке http://localhost:8000/api/v1/testapp/deal/create доступна форма для создания объекта модели Deal(модель сделки)
- + По ссылке http://localhost:8000/api/v1/testapp/deal/detail/<int:pk> доступна информация о конкретной сделке в формате json
+ + По ссылке http://localhost:8000/api/v1/testapp/deal/detail/1/ доступна информация о конкретной сделке в формате json
  
